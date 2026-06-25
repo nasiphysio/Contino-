@@ -44,7 +44,7 @@
             align-items:center;
             justify-content:space-between;
             padding:18px 6vw;
-            background:rgba(257,249,250,0.85);
+            background:rgba(247,249,250,0.85);
             backdrop-filter:blur(12px);
             border-bottom:1px solid rgba(14,58,95,0.06);
         }
@@ -79,16 +79,20 @@
             color:#fff;
         }
         
-        /* ===== Hero Carousel Section (المعرض في الأعلى) ===== */
+        /* ===== Hero Carousel Section ===== */
         .hero-carousel {
             position: relative;
-            height: 100vh;
+            min-height: 100vh;
             width: 100%;
             overflow: hidden;
-            background: #000;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .carousel-track {
-            position: relative;
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
         }
@@ -106,43 +110,29 @@
         .carousel-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: cover; /* لضمان ملء الشاشة بدون خطوط سوداء */
+            object-position: center;
             display: block;
         }
-        /* طبقة مظلمة فوق الصور ليتضح الخط */
         .carousel-slide::after {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, rgba(14,58,95,0.4), rgba(10,30,50,0.85));
+            background: linear-gradient(to bottom, rgba(14,58,95,0.45), rgba(10,30,50,0.88));
         }
         
-        /* المحتوى فوق الصور المتنقلة */
+        /* المحتوى المكتوب فوق المعرض */
         .hero-overlay-content {
-            position: absolute;
-            inset: 0;
+            position: relative;
             z-index: 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 6vw 60px;
+            width: 100%;
+            padding: 140px 6vw 80px;
             text-align: center;
             color: #fff;
         }
         .hero-inner {
             max-width: 880px;
-            width: 100%;
-        }
-        .hero-logo {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 24px;
-        }
-        .hero-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+            margin: 0 auto;
         }
         .eyebrow {
             display: inline-block;
@@ -152,7 +142,7 @@
             background: var(--teal);
             padding: 6px 20px;
             border-radius: 999px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         h1 {
@@ -208,7 +198,6 @@
             color: var(--navy);
         }
         
-        /* نقاط التحكم أسفل المعرض العلوي */
         .carousel-dots {
             position: absolute;
             bottom: 40px; left: 0; right: 0;
@@ -292,12 +281,13 @@
             line-height: 1.8;
         }
         
-        /* ===== Contact ===== */
+        /* ===== Contact Grid ===== */
         .contact { background: var(--bg); }
         .contact-grid {
-            display: flex;
-            justify-content: center;
-            max-width: 500px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
             margin: 0 auto;
         }
         .contact-card {
@@ -306,8 +296,12 @@
             border-radius: var(--radius);
             padding: 32px 26px;
             text-align: center;
-            width: 100%;
             box-shadow: var(--shadow);
+        }
+        .contact-card.alt {
+            background: var(--white);
+            color: var(--navy);
+            border: 1px solid rgba(14,58,95,0.08);
         }
         .contact-card .ci {
             width: 50px; height: 50px;
@@ -316,6 +310,9 @@
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 16px;
             font-size: 1.3rem;
+        }
+        .contact-card.alt .ci {
+            background: var(--pale);
         }
         .contact-card h4 {
             font-size: .85rem;
@@ -372,7 +369,6 @@
             padding-top: 22px;
         }
         
-        /* لغات مخصصة */
         [data-lang-el="en"] { display: none; }
         body.lang-en [data-lang-el="ar"] { display: none; }
         body.lang-en [data-lang-el="en"] { display: block; }
@@ -381,6 +377,7 @@
 </head>
 <body>
 
+    <!-- ===== الشريط العلوي ===== -->
     <div class="topbar">
         <div class="brand-mini">
             <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino logo">
@@ -392,6 +389,7 @@
         </div>
     </div>
 
+    <!-- ===== واجهة المعرض المتحرك بالكامل ===== -->
     <section class="hero-carousel">
         <div class="carousel-track" id="carousel-track">
             <div class="carousel-slide active">
@@ -409,9 +407,7 @@
 
         <div class="hero-overlay-content">
             <div class="hero-inner">
-                <div class="hero-logo">
-                    <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino Logo">
-                </div>
+                <!-- تم إزالة مربع اللوجو من المنتصف تماماً هنا بناءً على طلبك -->
                 <span class="eyebrow" data-lang-el="ar">منتج طبي للرجال</span>
                 <span class="eyebrow" data-lang-el="en">Men's Wellness Device</span>
                 
@@ -439,12 +435,11 @@
         </div>
     </section>
 
+    <!-- ===== قسم المميزات ===== -->
     <section class="about" id="about">
         <div class="section-head">
             <h2 data-lang-el="ar">ليه كونتينو؟</h2>
             <h2 data-lang-el="en">Why Contino?</h2>
-            <p data-lang-el="ar">كل التفاصيل في كونتينو متجهزة لتجربة استخدام يومية بسيطة، مريحة، وآمنة.</p>
-            <p data-lang-el="en">Every detail in Contino is built for a daily experience that's simple, comfortable, and safe.</p>
         </div>
         <div class="feature-grid">
             <div class="feature-card">
@@ -478,12 +473,14 @@
         </div>
     </section>
 
+    <!-- ===== قسم الاتصال (الموقع، الهاتف، الإيميل) ===== -->
     <section class="contact" id="contact">
         <div class="section-head">
             <h2 data-lang-el="ar">احنا قريبين منك</h2>
             <h2 data-lang-el="en">We're close to you</h2>
         </div>
         <div class="contact-grid">
+            <!-- كرت الموقع الداخلي -->
             <div class="contact-card">
                 <div class="ci">📍</div>
                 <h4 data-lang-el="ar">الموقع</h4>
@@ -491,9 +488,28 @@
                 <div class="value" data-lang-el="ar">السادس من أكتوبر، مصر</div>
                 <div class="value" data-lang-el="en">6th of October City, Egypt</div>
             </div>
+
+            <!-- كرت الهاتف (متروك فارغاً) -->
+            <div class="contact-card alt">
+                <div class="ci">📞</div>
+                <h4 data-lang-el="ar">الهاتف</h4>
+                <h4 data-lang-el="en">Phone</h4>
+                <!-- للتعديل: استبدل علامة الشرطة برقم هاتفك الحقيقي بالأسفل -->
+                <div class="value"><a href="tel:" style="color:inherit;text-decoration:none;">—</a></div>
+            </div>
+
+            <!-- كرت الإيميل (متروك فارغاً) -->
+            <div class="contact-card alt">
+                <div class="ci">✉️</div>
+                <h4 data-lang-el="ar">البريد الإلكتروني</h4>
+                <h4 data-lang-el="en">Email</h4>
+                <!-- للتعديل: استبدل علامة الشرطة بإيميلك الحقيقي بالأسفل -->
+                <div class="value"><a href="mailto:" style="color:inherit;text-decoration:none;">—</a></div>
+            </div>
         </div>
     </section>
 
+    <!-- ===== الفوتر ===== -->
     <footer>
         <div class="footer-logo">
             <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino">
@@ -540,13 +556,12 @@
             if(saved === 'en') setLang('en');
         })();
 
-        // ===== الـ Carousel التلقائي في الخلفية العلوية =====
+        // ===== الـ Carousel التلقائي =====
         (function initCarousel(){
             const slides = document.querySelectorAll('.carousel-slide');
             const dotsWrap = document.getElementById('carousel-dots');
             let current = 0;
 
-            // توليد النقاط التوجيهية ديناميكياً
             slides.forEach((_, i) => {
                 const dot = document.createElement('button');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
@@ -569,7 +584,6 @@
             }
 
             if(slides.length <= 1) return;
-            // التنقل التلقائي كل 4 ثوانٍ (4000 ملي ثانية)
             let interval = setInterval(next, 4000);
         })();
     </script>
