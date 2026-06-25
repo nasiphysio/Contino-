@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contino | كونتينو</title>
-    <meta name="description" content="كونتينو - جهاز مخصص للرجال للمساعدة على التعامل مع سلس البول، بتصميم مريح وآمن وقابل لإعادة الاستخدام. Contino is a reusable urinary incontinence device for men, designed for comfort and confidence.">
+    <meta name="description" content="كونتينو - جهاز مخصص للرجال للمساعدة على التعامل مع سلس البول، بتصميم مريح وآمن وقابل لإعادة الاستخدام.">
     <meta property="og:title" content="Contino | كونتينو">
     <meta property="og:description" content="حل عملي وآمن للرجال للتعامل مع سلس البول.">
-    <meta property="og:image" content="https://lh3.googleusercontent.com/d/117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC">
+    <meta property="og:image" content="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
         }
         body.lang-en{ font-family:'Poppins',sans-serif; }
         
-        /* ===== Top bar / lang switch ===== */
+        /* ===== Top bar ===== */
         .topbar{
             position:fixed;
             top:0; left:0; right:0;
@@ -44,10 +44,9 @@
             align-items:center;
             justify-content:space-between;
             padding:18px 6vw;
-            background:rgba(247,249,250,0.78);
-            backdrop-filter:blur(10px);
+            background:rgba(257,249,250,0.85);
+            backdrop-filter:blur(12px);
             border-bottom:1px solid rgba(14,58,95,0.06);
-            transition:background .3s;
         }
         .brand-mini{
             display:flex;
@@ -56,7 +55,6 @@
             font-weight:800;
             font-size:1.15rem;
             color:var(--navy);
-            letter-spacing:.2px;
         }
         .brand-mini img{height:34px; width:auto;}
         .lang-toggle{
@@ -81,338 +79,311 @@
             color:#fff;
         }
         
-        /* ===== Hero ===== */
-        .hero{
-            position:relative;
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            padding:120px 6vw 80px;
-            background: radial-gradient(circle at 18% 20%, rgba(47,169,186,0.16), transparent 55%), radial-gradient(circle at 85% 75%, rgba(27,122,140,0.14), transparent 50%), var(--bg);
-            overflow:hidden;
+        /* ===== Hero Carousel Section (المعرض في الأعلى) ===== */
+        .hero-carousel {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
         }
-        .hero::before{
-            content:"";
-            position:absolute;
-            width:600px; height:600px;
-            border-radius:48% 52% 55% 45% / 50% 45% 55% 50%;
-            background:linear-gradient(135deg, var(--cyan), var(--navy));
-            opacity:.07;
-            top:-220px;
-            inset-inline-end:-180px;
-            animation:float 14s ease-in-out infinite;
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
         }
-        @keyframes float{
-            0%,100%{ transform: translateY(0) rotate(0deg); }
-            50%{ transform: translateY(30px) rotate(8deg); }
+        .carousel-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            z-index: 1;
         }
-        .hero-inner{
-            position:relative;
-            z-index:2;
-            max-width:880px;
-            text-align:center;
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 2;
         }
-        .hero-logo{
-            width:120px; height:120px;
-            margin:0 auto 28px;
-            display:flex; align-items:center; justify-content:center;
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
-        .hero-logo img{
-            width:100%; height:100%;
-            object-fit:contain;
-            filter:drop-shadow(0 14px 24px rgba(14,58,95,0.18));
-        }
-        .eyebrow{
-            display:inline-block;
-            font-size:.82rem;
-            font-weight:700;
-            letter-spacing:.06em;
-            color:var(--teal);
-            background:var(--pale);
-            padding:8px 20px;
-            border-radius:999px;
-            margin-bottom:22px;
-        }
-        h1{
-            font-size:clamp(2.3rem, 5vw, 3.8rem);
-            font-weight:800;
-            color:var(--navy);
-            line-height:1.25;
-            margin-bottom:20px;
-        }
-        h1 span{ color:var(--teal); }
-        .hero-sub{
-            font-size:clamp(1rem, 1.6vw, 1.25rem);
-            color:#3c5468;
-            max-width:620px;
-            margin:0 auto 38px;
-            line-height:1.9;
-            font-weight:500;
-        }
-        .cta-row{
-            display:flex; gap:16px;
-            justify-content:center;
-            flex-wrap:wrap;
-        }
-        .btn{
-            display:inline-flex;
-            align-items:center; gap:8px;
-            padding:15px 34px;
-            border-radius:999px;
-            font-weight:700;
-            font-size:.95rem;
-            text-decoration:none;
-            transition:.25s;
-            cursor:pointer;
-            border:2px solid transparent;
-        }
-        .btn-primary{
-            background:linear-gradient(135deg, var(--teal), var(--navy));
-            color:#fff;
-            box-shadow:var(--shadow);
-        }
-        .btn-primary:hover{
-            transform:translateY(-3px);
-            box-shadow:0 22px 44px -14px rgba(14,58,95,0.34);
-        }
-        .btn-ghost{
-            border-color:var(--navy);
-            color:var(--navy);
-            background:transparent;
-        }
-        .btn-ghost:hover{
-            background:var(--navy);
-            color:#fff;
+        /* طبقة مظلمة فوق الصور ليتضح الخط */
+        .carousel-slide::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(14,58,95,0.4), rgba(10,30,50,0.85));
         }
         
-        /* ===== Wave divider ===== */
-        .wave-divider{
-            display:block;
-            width:100%; height:90px;
-            transform: translateY(1px);
+        /* المحتوى فوق الصور المتنقلة */
+        .hero-overlay-content {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 6vw 60px;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-inner {
+            max-width: 880px;
+            width: 100%;
+        }
+        .hero-logo {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 24px;
+        }
+        .hero-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+        }
+        .eyebrow {
+            display: inline-block;
+            font-size: .85rem;
+            font-weight: 700;
+            color: #fff;
+            background: var(--teal);
+            padding: 6px 20px;
+            border-radius: 999px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        h1 span { color: var(--cyan); }
+        .hero-sub {
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            color: #e2e8f0;
+            max-width: 650px;
+            margin: 0 auto 38px;
+            line-height: 1.8;
+            font-weight: 500;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+        .cta-row {
+            display: flex; gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center; gap: 8px;
+            padding: 15px 34px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: .95rem;
+            text-decoration: none;
+            transition: .25s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            color: #fff;
+            box-shadow: 0 10px 25px rgba(47,169,186,0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 30px rgba(47,169,186,0.6);
+        }
+        .btn-ghost {
+            border-color: #fff;
+            color: #fff;
+            background: transparent;
+        }
+        .btn-ghost:hover {
+            background: #fff;
+            color: var(--navy);
         }
         
-        /* ===== Section shared ===== */
-        section{ padding:90px 6vw; }
-        .section-head{
-            text-align:center;
-            max-width:680px;
-            margin:0 auto 56px;
+        /* نقاط التحكم أسفل المعرض العلوي */
+        .carousel-dots {
+            position: absolute;
+            bottom: 40px; left: 0; right: 0;
+            display: flex; justify-content: center;
+            gap: 10px; z-index: 4;
         }
-        .section-head .eyebrow{ margin-bottom:16px; }
-        .section-head h2{
-            font-size:clamp(1.8rem, 3.4vw, 2.6rem);
-            font-weight:800;
-            color:var(--navy);
-            margin-bottom:14px;
+        .dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.4);
+            cursor: pointer;
+            transition: .25s;
+            border: none;
         }
-        .section-head p{
-            color:#52697b;
-            font-size:1.05rem;
-            line-height:1.85;
+        .dot.active {
+            background: var(--cyan);
+            width: 28px;
+            border-radius: 6px;
+        }
+        
+        /* ===== Section Shared ===== */
+        section { padding: 90px 6vw; }
+        .section-head {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 56px;
+        }
+        .section-head h2 {
+            font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 14px;
+        }
+        .section-head p {
+            color: #52697b;
+            font-size: 1.05rem;
+            line-height: 1.85;
         }
         
         /* ===== About / Features ===== */
-        .about{ background:var(--white); }
-        .feature-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
-            gap:24px;
-            max-width:1100px;
-            margin:0 auto;
+        .about { background: var(--white); }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 24px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
-        .feature-card{
-            background:var(--bg);
-            border-radius:var(--radius);
-            padding:34px 26px;
-            text-align:center;
-            transition:.3s;
-            border:1px solid rgba(14,58,95,0.06);
+        .feature-card {
+            background: var(--bg);
+            border-radius: var(--radius);
+            padding: 34px 26px;
+            text-align: center;
+            transition: .3s;
+            border: 1px solid rgba(14,58,95,0.06);
         }
-        .feature-card:hover{
-            transform:translateY(-6px);
-            box-shadow:var(--shadow);
-            background:#fff;
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            background: #fff;
         }
-        .feature-icon{
-            width:58px;height:58px;
-            border-radius:16px;
-            background:linear-gradient(135deg, var(--cyan), var(--teal));
-            display:flex;align-items:center;justify-content:center;
-            margin:0 auto 18px;
-            color:#fff;
-            font-size:1.5rem;
-            font-weight:800;
+        .feature-icon {
+            width: 58px; height: 58px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--cyan), var(--teal));
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 800;
         }
-        .feature-card h3{
-            color:var(--navy);
-            font-size:1.1rem;
-            font-weight:700;
-            margin-bottom:10px;
+        .feature-card h3 {
+            color: var(--navy);
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 10px;
         }
-        .feature-card p{
-            color:#5c7383;
-            font-size:.92rem;
-            line-height:1.8;
-        }
-        
-        /* ===== Gallery / Carousel ===== */
-        .gallery{
-            background:var(--pale);
-            position:relative;
-        }
-        .carousel{
-            position:relative;
-            max-width:760px;
-            margin:0 auto;
-            border-radius:24px;
-            overflow:hidden;
-            box-shadow:var(--shadow);
-            aspect-ratio:4/3;
-            background:#fff;
-        }
-        .carousel-track{
-            position:relative;
-            width:100%; height:100%;
-        }
-        .carousel-slide{
-            position:absolute; inset:0;
-            opacity:0;
-            transition:opacity 1s ease-in-out;
-        }
-        .carousel-slide.active{ opacity:1; }
-        .carousel-slide img{
-            width:100%; height:100%;
-            object-fit:cover;
-            display:block;
-        }
-        .carousel-dots{
-            position:absolute;
-            bottom:18px; left:0; right:0;
-            display:flex; justify-content:center;
-            gap:10px; z-index:5;
-        }
-        .dot{
-            width:10px;height:10px;
-            border-radius:50%;
-            background:rgba(255,255,255,0.55);
-            cursor:pointer;
-            transition:.25s;
-            border:none;
-        }
-        .dot.active{
-            background:#fff;
-            width:26px;
-            border-radius:6px;
+        .feature-card p {
+            color: #5c7383;
+            font-size: .92rem;
+            line-height: 1.8;
         }
         
-        /* ===== Contact / Location ===== */
-        .contact{ background:var(--white); }
-        .contact-grid{
-            display:flex;
-            justify-content:center;
-            max-width:500px;
-            margin:0 auto;
+        /* ===== Contact ===== */
+        .contact { background: var(--bg); }
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            max-width: 500px;
+            margin: 0 auto;
         }
-        .contact-card{
-            background:linear-gradient(165deg, var(--navy), var(--teal));
-            color:#fff;
-            border-radius:var(--radius);
-            padding:32px 26px;
-            text-align:center;
-            width:100%;
+        .contact-card {
+            background: linear-gradient(165deg, var(--navy), var(--teal));
+            color: #fff;
+            border-radius: var(--radius);
+            padding: 32px 26px;
+            text-align: center;
+            width: 100%;
+            box-shadow: var(--shadow);
         }
-        .contact-card .ci{
-            width:50px;height:50px;
-            border-radius:14px;
-            background:rgba(255,255,255,0.18);
-            display:flex;align-items:center;justify-content:center;
-            margin:0 auto 16px;
-            font-size:1.3rem;
+        .contact-card .ci {
+            width: 50px; height: 50px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.18);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 1.3rem;
         }
-        .contact-card h4{
-            font-size:.85rem;
-            font-weight:700;
-            letter-spacing:.04em;
-            margin-bottom:10px;
-            opacity:.85;
+        .contact-card h4 {
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            opacity: .85;
         }
-        .contact-card .value{
-            font-size:1.05rem;
-            font-weight:600;
+        .contact-card .value {
+            font-size: 1.05rem;
+            font-weight: 600;
         }
         
         /* ===== Footer ===== */
-        footer{
-            background:var(--navy);
-            color:rgba(255,255,255,0.85);
-            padding:56px 6vw 32px;
-            text-align:center;
+        footer {
+            background: var(--navy);
+            color: rgba(255,255,255,0.85);
+            padding: 56px 6vw 32px;
+            text-align: center;
         }
-        .footer-logo{
-            width:56px;height:56px;
-            margin:0 auto 18px;
+        .footer-logo {
+            width: 56px; height: 56px;
+            margin: 0 auto 18px;
         }
-        .footer-logo img{
-            width:100%; height:100%;
-            object-fit:contain;
+        .footer-logo img {
+            width: 100%; height: 100%;
+            object-fit: contain;
         }
-        footer .tagline{
-            font-size:.95rem;
-            color:rgba(255,255,255,0.65);
-            margin-bottom:26px;
+        footer .tagline {
+            font-size: .95rem;
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 26px;
         }
-        .social-row{
-            display:flex; justify-content:center;
-            gap:16px; margin-bottom:30px;
+        .social-row {
+            display: flex; justify-content: center;
+            gap: 16px; margin-bottom: 30px;
         }
-        .social-row a{
-            width:44px;height:44px;
-            border-radius:50%;
-            background:rgba(255,255,255,0.1);
-            display:flex;align-items:center;justify-content:center;
-            color:#fff; transition:.25s;
-            text-decoration:none;
+        .social-row a {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; transition: .25s;
+            text-decoration: none;
         }
-        .social-row a:hover{
-            background:var(--cyan);
-            transform:translateY(-4px);
+        .social-row a:hover {
+            background: var(--cyan);
+            transform: translateY(-4px);
         }
-        .social-row svg{ width:20px; height:20px; fill:currentColor; }
-        .copyright{
-            font-size:.82rem;
-            color:rgba(255,255,255,0.45);
-            border-top:1px solid rgba(255,255,255,0.1);
-            padding-top:22px;
+        .social-row svg { width: 20px; height: 20px; fill: currentColor; }
+        .copyright {
+            font-size: .82rem;
+            color: rgba(255,255,255,0.45);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 22px;
         }
         
-        @media (prefers-reduced-motion: reduce){
-            .hero::before{ animation:none; }
-            .carousel-slide{ transition:none; }
-        }
-        a:focus-visible, button:focus-visible{
-            outline:3px solid var(--cyan);
-            outline-offset:3px;
-        }
-        @media (max-width:640px){
-            section{ padding:64px 6vw; }
-            .topbar{ padding:14px 5vw; }
-            .brand-mini{ font-size:1rem; }
-            .btn{ padding:13px 26px; font-size:.88rem; }
-        }
-        [data-lang-el="en"]{ display:none; }
-        body.lang-en [data-lang-el="ar"]{ display:none; }
-        body.lang-en [data-lang-el="en"]{ display:block; }
-        body.lang-en span[data-lang-el="en"]{ display:inline-block; }
-        body.lang-en .eyebrow[data-lang-el="en"]{ display:inline-block; }
+        /* لغات مخصصة */
+        [data-lang-el="en"] { display: none; }
+        body.lang-en [data-lang-el="ar"] { display: none; }
+        body.lang-en [data-lang-el="en"] { display: block; }
+        body.lang-en span[data-lang-el="en"] { display: inline-block; }
     </style>
 </head>
 <body>
 
     <div class="topbar">
         <div class="brand-mini">
-            <img src="https://lh3.googleusercontent.com/d/117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC" alt="Contino logo">
+            <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino logo">
             <span>Contino</span>
         </div>
         <div class="lang-toggle">
@@ -421,44 +392,57 @@
         </div>
     </div>
 
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-logo">
-                <img src="https://lh3.googleusercontent.com/d/117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC" alt="Contino">
+    <section class="hero-carousel">
+        <div class="carousel-track" id="carousel-track">
+            <div class="carousel-slide active">
+                <img src="https://drive.google.com/thumbnail?id=1jFo3y8vSR5sS1QY6ik8IqSEgya0D-Vq4&sz=w1000" alt="Contino Image 1">
             </div>
-            <span class="eyebrow" data-lang-el="ar">منتج طبي للرجال</span>
-            <span class="eyebrow" data-lang-el="en">Men's Wellness Device</span>
-            <h1 data-lang-el="ar">ثقة و<span>راحة</span> في كل لحظة</h1>
-            <h1 data-lang-el="en">Confidence and <span>comfort</span>, every moment</h1>
-            <p class="hero-sub" data-lang-el="ar">
-                كونتينو هو الحل العملي للرجال اللي بيتعاملوا مع سلس البول، بتصميم مريح وآمن بيرجع لك حريتك وثقتك في حياتك اليومية، من غير إحراج ومن غير تعقيد.
-            </p>
-            <p class="hero-sub" data-lang-el="en">
-                Contino is a practical solution for men managing urinary incontinence — a comfortable, secure design that brings back your freedom and confidence in everyday life, without complication or embarrassment.
-            </p>
-            <div class="cta-row">
-                <a href="#gallery" class="btn btn-primary">
-                    <span data-lang-el="ar">شاهد المنتج</span>
-                    <span data-lang-el="en">See the Product</span>
-                </a>
-                <a href="#contact" class="btn btn-ghost">
-                    <span data-lang-el="ar">تواصل معنا</span>
-                    <span data-lang-el="en">Contact Us</span>
-                </a>
+            <div class="carousel-slide">
+                <img src="https://drive.google.com/thumbnail?id=1fM7AsPLZJR_irzZ01vc8Z0tOpTB0yUgH&sz=w1000" alt="Contino Image 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="https://drive.google.com/thumbnail?id=1cZ7C1FHKYe104dSlcYNEBjCnEA1k4Cxl&sz=w1000" alt="Contino Image 3">
+            </div>
+        </div>
+        
+        <div class="carousel-dots" id="carousel-dots"></div>
+
+        <div class="hero-overlay-content">
+            <div class="hero-inner">
+                <div class="hero-logo">
+                    <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino Logo">
+                </div>
+                <span class="eyebrow" data-lang-el="ar">منتج طبي للرجال</span>
+                <span class="eyebrow" data-lang-el="en">Men's Wellness Device</span>
+                
+                <h1 data-lang-el="ar">ثقة و<span>راحة</span> في كل لحظة</h1>
+                <h1 data-lang-el="en">Confidence and <span>comfort</span>, every moment</h1>
+                
+                <p class="hero-sub" data-lang-el="ar">
+                    كونتينو هو الحل العملي للرجال اللي بيتعاملوا مع سلس البول، بتصميم مريح وآمن بيرجع لك حريتك وثقتك في حياتك اليومية، من غير إحراج ومن غير تعقيد.
+                </p>
+                <p class="hero-sub" data-lang-el="en">
+                    Contino is a practical solution for men managing urinary incontinence — a comfortable, secure design that brings back your freedom and confidence in everyday life, without complication or embarrassment.
+                </p>
+                
+                <div class="cta-row">
+                    <a href="#about" class="btn btn-primary">
+                        <span data-lang-el="ar">اكتشف المميزات</span>
+                        <span data-lang-el="en">Explore Features</span>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">
+                        <span data-lang-el="ar">تواصل معنا</span>
+                        <span data-lang-el="en">Contact Us</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none">
-        <path d="M0,40 C360,90 1080,0 1440,50 L1440,90 L0,90 Z" fill="#FFFFFF"></path>
-    </svg>
-
     <section class="about" id="about">
         <div class="section-head">
-            <span class="eyebrow" data-lang-el="ar">ليه كونتينو</span>
-            <span class="eyebrow" data-lang-el="en">Why Contino</span>
-            <h2 data-lang-el="ar">صُمم ليناسبك، مش العكس</h2>
-            <h2 data-lang-el="en">Designed to fit you — not the other way around</h2>
+            <h2 data-lang-el="ar">ليه كونتينو؟</h2>
+            <h2 data-lang-el="en">Why Contino?</h2>
             <p data-lang-el="ar">كل التفاصيل في كونتينو متجهزة لتجربة استخدام يومية بسيطة، مريحة، وآمنة.</p>
             <p data-lang-el="en">Every detail in Contino is built for a daily experience that's simple, comfortable, and safe.</p>
         </div>
@@ -494,37 +478,8 @@
         </div>
     </section>
 
-    <svg class="wave-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" style="transform:scaleY(-1) translateY(-1px);">
-        <path d="M0,40 C360,90 1080,0 1440,50 L1440,90 L0,90 Z" fill="#E8F4F5"></path>
-    </svg>
-
-    <section class="gallery" id="gallery">
-        <div class="section-head">
-            <span class="eyebrow" data-lang-el="ar">معرض الصور</span>
-            <span class="eyebrow" data-lang-el="en">Gallery</span>
-            <h2 data-lang-el="ar">شكل المنتج عن قرب</h2>
-            <h2 data-lang-el="en">A closer look at the product</h2>
-        </div>
-        <div class="carousel">
-            <div class="carousel-track" id="carousel-track">
-                <div class="carousel-slide active">
-                    <img src="https://lh3.googleusercontent.com/d/1jFo3y8vSR5sS1QY6ik8IqSEgya0D-Vq4" alt="Contino product photo 1">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://lh3.googleusercontent.com/d/1fM7AsPLZJR_irzZ01vc8Z0tOpTB0yUgH" alt="Contino product photo 2">
-                </div>
-                <div class="carousel-slide">
-                    <img src="https://lh3.googleusercontent.com/d/1cZ7C1FHKYe104dSlcYNEBjCnEA1k4Cxl" alt="Contino product photo 3">
-                </div>
-            </div>
-            <div class="carousel-dots" id="carousel-dots"></div>
-        </div>
-    </section>
-
     <section class="contact" id="contact">
         <div class="section-head">
-            <span class="eyebrow" data-lang-el="ar">تواصل معنا</span>
-            <span class="eyebrow" data-lang-el="en">Get in Touch</span>
             <h2 data-lang-el="ar">احنا قريبين منك</h2>
             <h2 data-lang-el="en">We're close to you</h2>
         </div>
@@ -541,7 +496,7 @@
 
     <footer>
         <div class="footer-logo">
-            <img src="https://lh3.googleusercontent.com/d/117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC" alt="Contino">
+            <img src="https://drive.google.com/thumbnail?id=117q6QcRPP71O8fkCX2C0M6SVHt0hBOxC&sz=w1000" alt="Contino">
         </div>
         <div class="tagline" data-lang-el="ar">ثقتك تبدأ من هنا</div>
         <div class="tagline" data-lang-el="en">Your confidence starts here</div>
@@ -560,7 +515,7 @@
     </footer>
 
     <script>
-        // ===== Language switching =====
+        // ===== نظام تغيير اللغة =====
         function setLang(lang){
             const html = document.documentElement;
             const body = document.body;
@@ -568,21 +523,15 @@
             const btnEn = document.getElementById('btn-en');
             
             if(lang === 'ar'){
-                html.lang = 'ar';
-                html.dir = 'rtl';
+                html.lang = 'ar'; html.dir = 'rtl';
                 body.classList.remove('lang-en');
-                btnAr.classList.add('active');
-                btnAr.setAttribute('aria-pressed', 'true');
-                btnEn.classList.remove('active');
-                btnEn.setAttribute('aria-pressed', 'false');
+                btnAr.classList.add('active'); btnAr.setAttribute('aria-pressed', 'true');
+                btnEn.classList.remove('active'); btnEn.setAttribute('aria-pressed', 'false');
             } else {
-                html.lang = 'en';
-                html.dir = 'ltr';
+                html.lang = 'en'; html.dir = 'ltr';
                 body.classList.add('lang-en');
-                btnEn.classList.add('active');
-                btnEn.setAttribute('aria-pressed', 'true');
-                btnAr.classList.remove('active');
-                btnAr.setAttribute('aria-pressed', 'false');
+                btnEn.classList.add('active'); btnEn.setAttribute('aria-pressed', 'true');
+                btnAr.classList.remove('active'); btnAr.setAttribute('aria-pressed', 'false');
             }
             localStorage.setItem('contino-lang', lang);
         }
@@ -591,16 +540,16 @@
             if(saved === 'en') setLang('en');
         })();
 
-        // ===== Carousel =====
+        // ===== الـ Carousel التلقائي في الخلفية العلوية =====
         (function initCarousel(){
             const slides = document.querySelectorAll('.carousel-slide');
             const dotsWrap = document.getElementById('carousel-dots');
             let current = 0;
 
+            // توليد النقاط التوجيهية ديناميكياً
             slides.forEach((_, i) => {
                 const dot = document.createElement('button');
                 dot.className = 'dot' + (i === 0 ? ' active' : '');
-                dot.setAttribute('aria-label', 'Go to slide ' + (i+1));
                 dot.addEventListener('click', () => goTo(i));
                 dotsWrap.appendChild(dot);
             });
@@ -620,17 +569,8 @@
             }
 
             if(slides.length <= 1) return;
+            // التنقل التلقائي كل 4 ثوانٍ (4000 ملي ثانية)
             let interval = setInterval(next, 4000);
-
-            const carousel = document.querySelector('.carousel');
-            carousel.addEventListener('mouseenter', () => clearInterval(interval));
-            carousel.addEventListener('mouseleave', () => {
-                interval = setInterval(next, 4000);
-            });
-            carousel.addEventListener('touchstart', () => clearInterval(interval), {passive:true});
-            carousel.addEventListener('touchend', () => {
-                interval = setInterval(next, 4000);
-            }, {passive:true});
         })();
     </script>
 </body>
