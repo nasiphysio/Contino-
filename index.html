@@ -110,7 +110,7 @@
         .carousel-slide img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* لضمان ملء الشاشة بدون خطوط سوداء */
+            object-fit: cover;
             object-position: center;
             display: block;
         }
@@ -121,7 +121,6 @@
             background: linear-gradient(to bottom, rgba(14,58,95,0.45), rgba(10,30,50,0.88));
         }
         
-        /* المحتوى المكتوب فوق المعرض */
         .hero-overlay-content {
             position: relative;
             z-index: 3;
@@ -231,11 +230,6 @@
             color: var(--navy);
             margin-bottom: 14px;
         }
-        .section-head p {
-            color: #52697b;
-            font-size: 1.05rem;
-            line-height: 1.85;
-        }
         
         /* ===== About / Features ===== */
         .about { background: var(--white); }
@@ -280,9 +274,65 @@
             font-size: .92rem;
             line-height: 1.8;
         }
+
+        /* ===== New Product Section (قسم المنتجات الجديد) ===== */
+        .product-section {
+            background: var(--pale);
+        }
+        .product-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: center;
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+        }
+        .product-media {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+        }
+        .product-media img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .specs-table tr {
+            border-bottom: 1px solid rgba(14,58,95,0.08);
+        }
+        .specs-table tr:last-child {
+            border-bottom: none;
+        }
+        .specs-table td {
+            padding: 14px 10px;
+            font-size: 0.95rem;
+            color: var(--ink);
+        }
+        .specs-table td.label {
+            font-weight: 700;
+            color: var(--navy);
+            width: 35%;
+        }
+        @media (max-width: 768px) {
+            .product-container {
+                grid-template-columns: 1fr;
+                padding: 24px;
+            }
+        }
         
         /* ===== Contact Grid ===== */
-        .contact { background: var(--bg); }
+        .contact { background: var(--white); }
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -299,7 +349,7 @@
             box-shadow: var(--shadow);
         }
         .contact-card.alt {
-            background: var(--white);
+            background: var(--bg);
             color: var(--navy);
             border: 1px solid rgba(14,58,95,0.08);
         }
@@ -407,7 +457,6 @@
 
         <div class="hero-overlay-content">
             <div class="hero-inner">
-                <!-- تم إزالة مربع اللوجو من المنتصف تماماً هنا بناءً على طلبك -->
                 <span class="eyebrow" data-lang-el="ar">منتج طبي للرجال</span>
                 <span class="eyebrow" data-lang-el="en">Men's Wellness Device</span>
                 
@@ -426,9 +475,9 @@
                         <span data-lang-el="ar">اكتشف المميزات</span>
                         <span data-lang-el="en">Explore Features</span>
                     </a>
-                    <a href="#contact" class="btn btn-ghost">
-                        <span data-lang-el="ar">تواصل معنا</span>
-                        <span data-lang-el="en">Contact Us</span>
+                    <a href="#product" class="btn btn-ghost">
+                        <span data-lang-el="ar">مواصفات المنتج</span>
+                        <span data-lang-el="en">Product Specs</span>
                     </a>
                 </div>
             </div>
@@ -473,14 +522,67 @@
         </div>
     </section>
 
-    <!-- ===== قسم الاتصال (الموقع، الهاتف، الإيميل) ===== -->
+    <!-- ===== قسم المنتج والمواصفات الجديد ===== -->
+    <section class="product-section" id="product">
+        <div class="section-head">
+            <h2 data-lang-el="ar">مواصفات المنتج الطبية</h2>
+            <h2 data-lang-el="en">Medical Specifications</h2>
+        </div>
+        <div class="product-container">
+            <!-- مساحة صورة المنتج -->
+            <div class="product-media">
+                <img src="https://drive.google.com/thumbnail?id=1LXsIxBQZDfzTgKTOMEsTAW4v_IqNRSh4&sz=w1000" alt="Contino Product Kit">
+            </div>
+            <!-- جدول المواصفات -->
+            <div class="product-specs">
+                <table class="specs-table" data-lang-el="ar">
+                    <tr>
+                        <td class="label">المادة المصنعة</td>
+                        <td>سيليكون طبي عالي الجودة وآمن تماماً على البشرة (Hypoallergenic).</td>
+                    </tr>
+                    <tr>
+                        <td class="label">الاستخدام</td>
+                        <td>قابل للغسيل وإعادة الاستخدام اليومي لمدد طويلة.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">آلية الإغلاق</td>
+                        <td>مفصلة ذكية لتوزيع الضغط المعتدل ومنع التسريب بفعالية.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">المحتويات</td>
+                        <td>مجموعة متكاملة تشمل المقاسات المتعددة ودليل الاستخدام الحركي.</td>
+                    </tr>
+                </table>
+                <table class="specs-table" data-lang-el="en">
+                    <tr>
+                        <td class="label">Material</td>
+                        <td>Premium medical-grade, hypoallergenic silicone.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Durability</td>
+                        <td>Fully washable and designed for long-term daily reuse.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Mechanism</td>
+                        <td>Smart hinge technology for balanced pressure and leak control.</td>
+                    </tr>
+                    <tr>
+                        <td class="label">Package</td>
+                        <td>Complete sizing kit with an instructional user guide.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== قسم الاتصال ===== -->
     <section class="contact" id="contact">
         <div class="section-head">
             <h2 data-lang-el="ar">احنا قريبين منك</h2>
             <h2 data-lang-el="en">We're close to you</h2>
         </div>
         <div class="contact-grid">
-            <!-- كرت الموقع الداخلي -->
+            <!-- كرت الموقع -->
             <div class="contact-card">
                 <div class="ci">📍</div>
                 <h4 data-lang-el="ar">الموقع</h4>
@@ -489,21 +591,21 @@
                 <div class="value" data-lang-el="en">6th of October City, Egypt</div>
             </div>
 
-            <!-- كرت الهاتف (متروك فارغاً) -->
+            <!-- كرت الهاتف (متروك فارغاً لتعديله لاحقاً) -->
             <div class="contact-card alt">
                 <div class="ci">📞</div>
                 <h4 data-lang-el="ar">الهاتف</h4>
                 <h4 data-lang-el="en">Phone</h4>
-                <!-- للتعديل: استبدل علامة الشرطة برقم هاتفك الحقيقي بالأسفل -->
+                <!-- للتعديل: استبدل علامة الشرطة برقم هاتفك بعد tel: وداخل الـ div -->
                 <div class="value"><a href="tel:" style="color:inherit;text-decoration:none;">—</a></div>
             </div>
 
-            <!-- كرت الإيميل (متروك فارغاً) -->
+            <!-- كرت الإيميل (متروك فارغاً لتعديله لاحقاً) -->
             <div class="contact-card alt">
                 <div class="ci">✉️</div>
                 <h4 data-lang-el="ar">البريد الإلكتروني</h4>
                 <h4 data-lang-el="en">Email</h4>
-                <!-- للتعديل: استبدل علامة الشرطة بإيميلك الحقيقي بالأسفل -->
+                <!-- للتعديل: استبدل علامة الشرطة بإيميلك بعد mailto: وداخل الـ div -->
                 <div class="value"><a href="mailto:" style="color:inherit;text-decoration:none;">—</a></div>
             </div>
         </div>
